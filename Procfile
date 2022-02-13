@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn app:app -b 0.0.0.0:3000 2 --timout=10 -k gevent
