@@ -19,7 +19,7 @@ def func(function):
     plt.grid(True)
     plt.box(True)
     plt.subplot(1,1,1)
-    plt.savefig("plot.png", dpi=95)
+    plt.savefig("image/plot.png", dpi=95)
     plt.cla()
     return "Good"
 
