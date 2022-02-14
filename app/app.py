@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from flask import Flask
 import os
 
-app=Flask(__name__, static_url_path='/image')
+app=Flask(__name__,static_folder="./image/")
 @app.route("/")
 def home():
     return '''
@@ -25,7 +25,6 @@ def func(function):
         return "Good"
     except:
         return "Error!"
-
 
 if __name__ == "__main__":
     app.run(port=3000, debug=True)
