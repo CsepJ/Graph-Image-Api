@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from flask import Flask
 
-app=Flask(__name__, static_url_path='/image')
+app=Flask(__name__, static_url_path='./image')
 @app.route("/")
 def home():
     return '''
@@ -19,6 +19,6 @@ def func(function):
     plt.grid(True)
     plt.box(True)
     plt.subplot(1,1,1)
-    plt.savefig("image/plot.png", dpi=95)
+    plt.savefig("./image/plot.png", dpi=95)
     plt.cla()
     return "Good"
