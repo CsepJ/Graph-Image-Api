@@ -1,6 +1,7 @@
-import numpy as np
+from numpy import *
 import matplotlib.pyplot as plt
 from flask import Flask
+import os
 
 app=Flask(__name__, static_url_path='/image')
 @app.route("/")
@@ -12,13 +13,19 @@ def home():
 @app.route("/function/<string:function>")
 def func(function):
     print(function)
-    x = np.arange(0,100)
-    y = eval(function)
-    plt.plot(x,y)
-    plt.title(function)
-    plt.grid(True)
-    plt.box(True)
-    plt.subplot(1,1,1)
-    plt.savefig("/image/plot.png", dpi=95)
-    plt.cla()
-    return "Good"
+    x = arange(0,100)
+    try:
+        function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
+        y = eval(function)
+        plt.plot(x,y)
+        plt.title(function)
+        plt.grid(True)
+        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot.png", dpi=95)
+        plt.cla()
+        return "Good"
+    except:
+        return "Error!"
+
+
+if __name__ == "__main__":
+    app.run(port=3000, debug=True)
