@@ -20,7 +20,7 @@ def func(function):
         plt.plot(x,y)
         plt.title(function)
         plt.grid(True)
-        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot-"+function+".png", dpi=95)
+        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot.png", dpi=95)
         plt.cla()
         return "Good"
     except:
