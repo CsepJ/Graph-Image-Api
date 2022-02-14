@@ -22,6 +22,3 @@ def func(function):
     plt.savefig("image/plot.png", dpi=95)
     plt.cla()
     return "Good"
-
-if __name__ == '__main__':
-    app.run(debug=False, host="0.0.0.0")
