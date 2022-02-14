@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from flask import Flask
 import os
 import re as regexp
+import keywords
 
 app=Flask(__name__,static_folder="./image/")
 @app.route("/")
@@ -18,6 +19,8 @@ def func(function):
     try:
         comFunc = function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
         comFunc = regexp.sub("[ㄱ-힣]", "", comFunc)
+        for word of keywords.kwlist:
+            comFunc = comFunc.replace(word, "")
         y = eval(comFunc)
         plt.plot(x,y)
         plt.title(function)
