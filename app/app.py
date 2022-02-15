@@ -4,7 +4,7 @@ from flask import Flask
 import math
 import re as regexp
 import os
-app=Flask(__name__,static_folder="./image/")
+app=Flask(__name__,static_folder="./images/")
 @app.route("/")
 def home():
     return '''
