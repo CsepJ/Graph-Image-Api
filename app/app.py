@@ -27,6 +27,8 @@ def func(function,xvalue):
             array.insert(index,pm+num)
         array = "".join(array)
         y = eval(array)
+        print(x)
+        print(y)
         plt.plot(eval(x),y)
         plt.title(function)
         plt.grid(True)
