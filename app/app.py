@@ -1,4 +1,5 @@
-import numpy as math
+import numpy as np
+import math
 import matplotlib.pyplot as plt
 from flask import Flask
 import re as regexp
@@ -22,7 +23,7 @@ def func(function):
         for word in result:
             index=int(result.index(word))
             pm = "+" if index==0 else resultWithpm[index*2-1]
-            num = "0" if regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(math.)+(\w{1,}))).)*$","",word) == "" else regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(math.)+(\w{1,}))).)*$","",word)
+            num = "0" if regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(np.)+(\w{1,})\(x\)|(np.)+(\w{1,})|(math.)+(\w{1,}))).)*$","",word) == "" else regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(np.)+(\w{1,})\(x\)|(np.)+(\w{1,})|(math.)+(\w{1,}))).)*$","",word)
             array.insert(index,pm+num)
         array = "".join(array)
         y = eval(array)
