@@ -34,5 +34,5 @@ def func(function):
         plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot-"+function+".png", dpi=95)
         plt.cla()
         return "Good"
-    except:
-        return "Error!"
+    except Exception as e:
+        return e
