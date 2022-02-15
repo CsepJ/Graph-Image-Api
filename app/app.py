@@ -25,7 +25,7 @@ def func(function):
             pm = "+" if index==0 else resultWithpm[index*2-1]
             num = "0" if regexp.sub("^((?!((\d)|(x)|(Math.)+(\w{1,})\(x\)|(Math.)+(\w{1,}))).)*$","",word) == "" else regexp.sub("^((?!((\d)|(x)|(Math.)+(\w{1,})\(x\)|(Math.)+(\w{1,}))).)*$","",word)
             array.insert(index,pm+num)
-        "".join(array)
+        array = "".join(array)
         print(array)
         y = eval(array)
         plt.plot(x,y)
