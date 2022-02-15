@@ -14,7 +14,6 @@ def home():
 @app.route("/function/<string:function>")
 def func(function):
     x = np.linspace(0,2*np.pi, num=150)
-    print(x)
     try:
         comFunc = function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
         text = regexp.sub("[ㄱ-힣]", "", comFunc)
@@ -31,7 +30,7 @@ def func(function):
         plt.plot(x,y)
         plt.title(function)
         plt.grid(True)
-        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot-"+function.replace("*", "")+".png", dpi=95)
+        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/images/plot-"+function.replace("*", "")+".png", dpi=95)
         plt.cla()
         return "Good"
     except Exception as e:
