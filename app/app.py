@@ -27,7 +27,7 @@ def func(function,xvalue):
             array.insert(index,pm+num)
         array = "".join(array)
         y = eval(array)
-        plt.plot(x,y)
+        plt.plot(eval(x),y)
         plt.title(function)
         plt.grid(True)
         plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/image/plot-"+function+"-"+xvalue+".png", dpi=95)
