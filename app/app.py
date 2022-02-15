@@ -1,7 +1,6 @@
-from numpy import *
+import numpy as math
 import matplotlib.pyplot as plt
 from flask import Flask
-import math
 import re as regexp
 import os
 app=Flask(__name__,static_folder="./image/")
@@ -13,7 +12,7 @@ def home():
 
 @app.route("/function/<string:function>")
 def func(function):
-    x = arange(0,100)
+    x = math.arange(0,100)
     try:
         comFunc = function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
         text = regexp.sub("[ㄱ-힣]", "", comFunc)
@@ -23,10 +22,9 @@ def func(function):
         for word in result:
             index=int(result.index(word))
             pm = "+" if index==0 else resultWithpm[index*2-1]
-            num = "0" if regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(math.)+(\w{1,}))).)*$","",word) == "" else regexp.sub("^((?!((\d)|(x)|(Math.)+(\w{1,})\(x\)|(Math.)+(\w{1,}))).)*$","",word)
+            num = "0" if regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(math.)+(\w{1,}))).)*$","",word) == "" else regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(math.)+(\w{1,}))).)*$","",word)
             array.insert(index,pm+num)
         array = "".join(array)
-        print(eval(array))
         y = eval(array)
         plt.plot(x,y)
         plt.title(function)
@@ -35,4 +33,4 @@ def func(function):
         plt.cla()
         return "Good"
     except Exception as e:
-        return e
+        return "Error!"
