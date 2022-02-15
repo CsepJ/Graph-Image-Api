@@ -13,7 +13,7 @@ def home():
 
 @app.route("/function/<string:function>")
 def func(function):
-    x = np.arange(0,100)
+    x = np.arange(0,10)
     try:
         comFunc = function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
         text = regexp.sub("[ㄱ-힣]", "", comFunc)
