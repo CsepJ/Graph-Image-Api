@@ -14,6 +14,7 @@ def home():
 @app.route("/function/<string:function>/<string:xvalue>")
 def func(function,xvalue):
     x = np.arange(0,100) if regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(np.)+(\w{1,})\(x\)|(np.)+(\w{1,})|(math.)+(\w{1,}))).)*$","",xvalue) == "" else regexp.sub("^((?!((\d)|(x)|(math.)+(\w{1,})\(x\)|(np.)+(\w{1,})\(x\)|(np.)+(\w{1,})|(math.)+(\w{1,}))).)*$","",xvalue)
+    print(x)
     try:
         comFunc = function.replace("^", "**").replace("×", "*").replace("÷", "/").replace("²","**2").replace("½", "**1/2").replace("³", "**3").replace("⁴", "**4").replace("⅓", "**1/3").replace("⅔", "**2/3").replace("¼", "**1/4").replace("¾", "**3/4")
         text = regexp.sub("[ㄱ-힣]", "", comFunc)
@@ -36,4 +37,5 @@ def func(function,xvalue):
         plt.cla()
         return "Good"
     except Exception as e:
+        print(e)
         return "Error!"
