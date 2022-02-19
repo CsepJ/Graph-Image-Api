@@ -28,7 +28,7 @@ def func(function):
         array = "".join(array)
         y = eval(array)
         plt.plot(x,y)
-        plt.plot(0,y);
+        plt.plot(np.linspace(0,0,num=300),y);
         plt.title(function)
         plt.grid(True)
         plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/result/plot-"+function.replace("*", "#")+".png", dpi=95)
