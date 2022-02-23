@@ -31,8 +31,8 @@ def func(function):
         plt.plot(x,y)
         plt.title(function)
         plt.grid(True)
-        print(function.replace("*", "#")+".png")
-        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/result/plot-"+function.replace("*", "#")+".png", dpi=95)
+        print(function.replace("*", "_")+".png")
+        plt.savefig(os.path.dirname(os.path.abspath(__file__))+"/result/plot-"+function.replace("*", "_")+".png", dpi=95)
         plt.cla()
         return "Good"
     except Exception as e:
